@@ -1,0 +1,52 @@
+{
+  "name": "local-python-dev",
+  "owner": {
+    "name": "Local User",
+    "email": "user@example.com"
+  },
+  "metadata": {
+    "description": "Local Python development plugins with custom modifications",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "local-python-development",
+      "source": "./",
+      "description": "Local Python development plugins with custom conda-pip-management, streamlit-pro, and tkinter-pro agents",
+      "version": "1.0.0",
+      "author": {
+        "name": "Local User",
+        "email": "user@example.com"
+      },
+      "license": "MIT",
+      "keywords": [
+        "python",
+        "development",
+        "conda",
+        "streamlit",
+        "tkinter",
+        "local"
+      ],
+      "category": "languages",
+      "strict": false,
+      "commands": [
+        "./commands/python-scaffold.md"
+      ],
+      "agents": [
+        "./agents/python-pro.md",
+        "./agents/streamlit-pro.md",
+        "./agents/tkinter-pro.md"
+		"./agents/fastapi-pro.md",
+        "./agents/django-pro.md"
+      ],
+      "skills": [
+		"./skills/async-python-patterns",
+        "./skills/conda-pip-management",
+        "./skills/python-packaging",
+        "./skills/python-performance-optimization",
+        "./skills/python-testing-patterns",
+        "./skills/uv-package-manager",
+      ]
+    }
+  ]
+}

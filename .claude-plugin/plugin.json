@@ -1,0 +1,16 @@
+{
+  "name": "Local Python Development",
+  "description": "Local Python development plugins with custom conda-pip-management, streamlit-pro, and tkinter-pro agents",
+  "version": "1.0.0",
+  "author": {
+    "name": "Local User",
+    "email": "user@example.com"
+  },
+  "license": "MIT",
+  "keywords": ["python", "development", "conda", "streamlit", "tkinter"],
+  "categories": ["development", "data-science"],
+  "repository": {
+    "type": "local",
+    "path": "C:\\Users\\black_samurai\\.claude\\plugins\\local-python-development"
+  }
+}
