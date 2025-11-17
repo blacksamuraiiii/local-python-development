@@ -70,6 +70,17 @@ cp ~/.claude/plugins/local-python-development/CLAUDE.md ~/.claude/CLAUDE.md
 
 3. 重启Claude以加载插件
 
+### 快速开始示例
+
+创建一个具有st_aggrid数据网格和on_change回调的Streamlit应用：
+```bash
+# 请求Claude创建Streamlit应用
+请帮我创建一个Streamlit数据管理应用，包含：
+- st_aggrid数据表格，支持排序、过滤和行选择
+- on_change回调实现表单字段联动
+- 会话状态管理确保数据同步
+```
+
 ### 配置说明
 
 #### 插件目录结构
@@ -95,6 +106,8 @@ Claude会自动识别以下目录结构中的代理和技能：
 - 提及"tkinter"、"GUI" → 自动调用 `tkinter-pro`
 - 提及"conda"、"pip" → 自动调用 `conda-pip-management`
 - 提及"异步"、"async" → 自动调用 `async-python-patterns`
+- 提及"st_aggrid"、"数据网格" → 自动调用 `streamlit-pro` + st_aggrid技能
+- 提及"on_change"、"字段联动" → 自动调用 `streamlit-pro` + 表单验证技能
 
 #### 可选：Claude设置文件
 在 `~/.claude/settings.json` 中可以添加额外配置：
@@ -156,6 +169,8 @@ Claude会自动识别以下目录结构中的代理和技能：
 1. **streamlit-pro.md**
    - 专门针对Streamlit 1.28+最新特性
    - 包含认证系统、缓存策略、状态管理
+   - **st_aggrid集成**: GridOptionsBuilder配置、选择处理、企业级功能
+   - **on_change回调**: 字段联动、级联下拉菜单、实时验证
    - 生产部署和性能优化最佳实践
 
 2. **tkinter-pro.md**
@@ -174,6 +189,8 @@ Claude会自动识别以下目录结构中的代理和技能：
 - **场景驱动开发**: 针对不同开发场景提供专门的工作流程
 - **现代工具集成**: 支持uv、ruff、mypy等2024/2025最新工具
 - **生产就绪**: 强调测试、部署、监控等生产环境考虑
+- **高级UI模式**: st_aggrid数据网格、on_change回调联动、复杂表单验证
+- **性能优化**: 片段化更新、缓存策略、内存管理最佳实践
 
 ## 🎯 开发场景
 
@@ -181,6 +198,14 @@ Claude会自动识别以下目录结构中的代理和技能：
 ```python
 # 自动触发: streamlit-pro + conda-pip-management
 创建一个交互式数据仪表板，使用Streamlit展示数据分析结果
+# 包含：st_aggrid数据表格、on_change联动表单、实时数据更新
+```
+
+### 复杂表单应用
+```python
+# 自动触发: streamlit-pro
+构建具有字段联动的复杂表单应用，使用on_change回调实现动态字段更新
+# 示例：分光器信息采集系统，场景选择自动更新相关字段
 ```
 
 ### 桌面工具开发
@@ -199,6 +224,12 @@ Claude会自动识别以下目录结构中的代理和技能：
 ```python
 # 自动触发: python-pro + python-performance-optimization
 优化现有Python应用的性能，分析瓶颈并实施改进
+```
+
+### 数据网格应用
+```python
+# 自动触发: streamlit-pro
+开发具有高级数据网格的Streamlit应用，使用st_aggrid实现排序、过滤、选择功能
 ```
 
 ## 🛠️ 环境要求
