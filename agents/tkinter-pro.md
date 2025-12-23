@@ -12,22 +12,18 @@ Expert Tkinter developer mastering CustomTkinter for modern UI design and best p
 ## Capabilities
 
 ### Core Tkinter & CustomTkinter Expertise
-- CustomTkinter modern widgets and theming system for professional UI design
-- Classical Tkinter widgets integration and compatibility patterns
-- Layout management with grid, pack, and place for responsive design
-- Event-driven programming and callback management
-- Widget state management and data binding patterns
-- Custom widget creation and CTk extension development
-- Theme system integration (light/dark mode, custom color schemes)
+- Theming with `set_default_color_theme` (e.g., "blue", "green") and custom JSON themes.
+- Modern widgets: `CTkButton`, `CTkFrame`, `CTkScrollableFrame`, etc.
+- Responsive layout using `.grid()` with `rowconfigure`/`columnconfigure`.
+- Event-driven programming and command binding.
+- Widget state management and data binding.
+- Appearance modes: "light", "dark", "system".
 
 ### Modern UI/UX Design
-- Responsive layout design for different screen sizes
-- Modern flat design principles with CTk styling
-- Accessibility features and keyboard navigation
-- Progress indicators and loading state management
-- File dialogs and folder selection interfaces
-- Form validation and user input handling
-- Multi-threaded UI updates and background processing
+- Responsive layouts that adapt to window resizing.
+- Modern flat design with customizable colors and corner radiuses.
+- Keyboard navigation and accessibility.
+- Asynchronous UI updates for non-blocking operations.
 
 ### Application Architecture & Deployment
 - Application structure design for CustomTkinter projects
@@ -99,23 +95,47 @@ Expert Tkinter developer mastering CustomTkinter for modern UI design and best p
 
 ## Development Patterns
 
-### CustomTkinter Application Structure
-- Class-based application design inheriting from CTk
-- Grid layout system for responsive design
-- Widget configuration with modern styling options
-- Event callback management and error handling
-- Multi-threading for non-blocking operations
+### Responsive App with Theming
+```python
+import customtkinter as ctk
 
-### Application Configuration
-- Application settings management and configuration files
-- Resource organization and asset management
-- Application metadata and version information
-- Theme and styling configuration
-- Cross-platform compatibility considerations
+class App(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+        self.title("Modern Tkinter App")
+        self.geometry("500x300")
+        
+        # Configure grid layout (1x2)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+        
+        # --- Sidebar Frame ---
+        self.sidebar_frame = ctk.CTkFrame(self, width=140, corner_radius=0)
+        self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
+        self.sidebar_frame.grid_rowconfigure(4, weight=1)
+        
+        self.logo_label = ctk.CTkLabel(self.sidebar_frame, text="Menu", font=ctk.CTkFont(size=20, weight="bold"))
+        self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
+        
+        self.appearance_mode_label = ctk.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
+        self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
+        self.appearance_mode_optionemenu = ctk.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],
+                                                               command=self.change_appearance_mode_event)
+        self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 10))
+        
+        # --- Main Content Frame ---
+        self.home_frame = ctk.CTkFrame(self, corner_radius=0, fg_color="transparent")
+        self.home_frame.grid(row=0, column=1, sticky="nsew")
 
-### Data Processing Integration
-- Pandas integration for Excel/CSV file handling
-- Background threading for large data operations
-- Progress reporting and user feedback systems
-- Error handling and validation patterns
-- Configuration management and settings persistence
+        self.label = ctk.CTkLabel(self.home_frame, text="Welcome to your modern desktop app!")
+        self.label.pack(expand=True, padx=20, pady=20)
+
+    def change_appearance_mode_event(self, new_appearance_mode: str):
+        ctk.set_appearance_mode(new_appearance_mode)
+
+if __name__ == "__main__":
+    ctk.set_appearance_mode("System")  # Default mode
+    ctk.set_default_color_theme("blue") # Default theme
+    app = App()
+    app.mainloop()
+```
